@@ -46,10 +46,10 @@ for STUDENT in $STUDENTS; do
 				open *.xcodeproj
 			fi
 			IOSSIMVERSION=(`echo $IOSSIM | tr '.' ' '`)
-			if [[ $IOSSIMVERSION[0] -lt '3' ]]; then
+			if [[ ${IOSSIMVERSION[0]} -lt '3' ]]; then
 				open *.xcodeproj
 			else
-				ios-sim launch *.app --exit --timeout 120 --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5 7.1"
+				ios-sim launch *.app --exit --timeout 120 --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5, 7.1"
 			fi
 		fi
 		echo \\n

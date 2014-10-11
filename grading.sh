@@ -36,7 +36,7 @@ for STUDENT in $STUDENTS; do
 	GOOD=`ls | grep xcodeproj | wc -l`
 	if [[ $GOOD -eq '1' ]]; then
 		echo \\nBuilding $STUDENT\\n
-		xcodebuild -configuration Debug -sdk iphonesimulator7.1 | xcpretty
+		xcodebuild -configuration Debug -sdk iphonesimulator8.0 | xcpretty
 		cp -r build/Debug-iphonesimulator/*.app .
 		if [[ ${PIPESTATUS[0]} -ne '0' ]]; then
 			echo \\n\\nBUILD ERROR\\n\\n
@@ -49,7 +49,7 @@ for STUDENT in $STUDENTS; do
 			if [[ ${IOSSIMVERSION[0]} -lt '3' ]]; then
 				open *.xcodeproj
 			else
-				ios-sim launch *.app --exit --timeout 120 --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5, 7.1"
+				ios-sim launch *.app --exit --timeout 120 --devicetypeid "com.apple.CoreSimulator.SimDeviceType.iPhone-5, 8.0"
 			fi
 		fi
 		echo \\n

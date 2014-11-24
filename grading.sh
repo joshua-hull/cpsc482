@@ -4,7 +4,7 @@ ASSIGNMENT=$1
 WORKING=~/Desktop/grading
 BAD=()
 
-cd cpsc4820-003/assignments/A${ASSIGNMENT}
+cd cpsc4820-003/assignments/${ASSIGNMENT}
 
 STUDENTS=`ls -d */ | sed 's#/##'`
 
@@ -15,10 +15,10 @@ fi
 
 for STUDENT in $STUDENTS; do
 	mkdir -p $WORKING/$STUDENT
-	if [[ -f $STUDENT/$STUDENT.a$ASSIGNMENT.zip ]]; then
-		unzip -q $STUDENT/$STUDENT.a$ASSIGNMENT.zip -d $WORKING/$STUDENT
-	elif [[ -f $STUDENT/$STUDENT.a$ASSIGNMENT.tar ]]; then
-		tar xf $STUDENT/$STUDENT.a$ASSIGNMENT.tar --directory $WORKING/$STUDENT
+	if [[ -f $STUDENT/$STUDENT.$ASSIGNMENT.zip ]]; then
+		unzip -q $STUDENT/$STUDENT.$ASSIGNMENT.zip -d $WORKING/$STUDENT
+	elif [[ -f $STUDENT/$STUDENT.$ASSIGNMENT.tar ]]; then
+		tar xf $STUDENT/$STUDENT.$ASSIGNMENT.tar --directory $WORKING/$STUDENT
 	else
 		echo Didn\'t Find Any Archive for $STUDENT
 		BAD+=($STUDENT)
